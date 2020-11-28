@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 
 * {
   margin: 0;
@@ -27,16 +28,19 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px #eee;
 }
 
-.title {
+.title,
+.error {
+  margin-top: 1rem;
   text-align: center;
-  color: #ffa500;
-  text-shadow: 2px 2px 8px #181818;
+  color: #16c7b8;
+  font-size: 3rem;
+  font-family: "Creepster", cursive;
+  text-shadow: 1px 1px 0.5px #d0fa15;
 }
 
 img {
   border-radius: 50%;
   width: 20rem;
-  margin: auto;
 }
 
 .info {
@@ -91,9 +95,58 @@ img {
 @media only screen and (max-width: 400px) {
   img {
     width: 10rem;
+  }
+  body {
+    font-size: 0.8rem;
+  }
+  .green {
+    width: 15px;
+    height: 15px;
+  }
+
+  .orange {
+    width: 15px;
+    height: 15px;
+  }
+
+  .red {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 850px) {
+  img {
+    width: 10rem;
     margin: auto;
   }
   body {
-    font-size: 0.5rem;
+    font-size: 1rem;
   }
+  .green {
+    width: 15px;
+    height: 15px;
+  }
+
+  .orange {
+    width: 15px;
+    height: 15px;
+  }
+
+  .red {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.btn-container {
+  display: flex;
+}
+
+.btn {
+  background-color: #d0fa15;
+  border: none;
+  border-radius: 5px;
+  margin: 2rem auto;
+  padding: 0.5rem 0.8rem;
 }

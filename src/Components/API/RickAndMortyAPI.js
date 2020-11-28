@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import RickandMorty from "../Homepage";
 
 import "../styles/styles.css";
 
@@ -6,72 +7,82 @@ class RickAndMortyAPI extends Component {
   constructor() {
     super();
     this.state = {
-      character: "",
+      isLoading: false,
+      character: [],
+      page: 1,
+      info: [],
     };
   }
 
-  componentDidMount() {
-    fetch("https://rickandmortyapi.com/api/character/?page=1")
-      .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          character: data.results.map((all) => {
-            return (
-              <div className="grid">
-                <div className="info">
-                  <p>
-                    <strong>Name: </strong>
-                    {all.name}
-                  </p>
-                  <p>
-                    <strong>Species: </strong>
-                    {all.species}
-                  </p>
-                  <p>
-                    <strong>Gender: </strong>
-                    {all.gender}
-                  </p>
-                  <p>
-                    <strong>Origin: </strong>
-                    {all.origin.name}
-                  </p>
-                  <p>
-                    <strong>Last known location: </strong>
-                    {all.location.name}
-                  </p>
-                  <p>
-                    <strong>Episodes: </strong>
-                    {all.episode.length}
-                  </p>
-                  <p>
-                    <strong>Status: </strong>
-                    {all.status}{" "}
-                    <span
-                      className={
-                        all.status === "Alive"
-                          ? "green"
-                          : "red" && all.status === "unknown"
-                          ? "orange"
-                          : "red"
-                      }
-                    ></span>
-                  </p>
-                </div>
-                <div>
-                  <img src={all.image} alt={all.name} />
-                </div>
-              </div>
-            );
-          }),
-        })
+  fetchData = async (page) => {
+    this.setState({
+      isLoading: false,
+    });
+    try {
+      const res = await fetch(
+        `https://rickandmortyapi.com/api/character/?page=${page}`
       );
-  }
+      if (res.ok) {
+        const data = await res.json();
+
+        setTimeout(() => {
+          this.setState(() => {
+            return {
+              isLoading: true,
+              character: data.results,
+              info: data.info.pages,
+            };
+          });
+        }, 250);
+      } else {
+        this.setState({
+          error: true,
+        });
+      }
+    } catch (e) {
+      this.setState({
+        error: true,
+      });
+      console.log(e);
+    }
+  };
+
+  componentDidMount = () => {
+    this.fetchData(this.state.page);
+  };
+
+  nextClick = () => {
+    this.fetchData(
+      this.state.page === this.state.info ? 1 : this.state.page + 1
+    );
+    this.setState({
+      page: this.state.page === this.state.info ? 1 : this.state.page + 1,
+    });
+  };
+
+  prevClick = () => {
+    this.fetchData(
+      this.state.page <= 1 ? this.state.info : this.state.page - 1
+    );
+    this.setState({
+      page: this.state.page <= 1 ? this.state.info : this.state.page - 1,
+    });
+  };
 
   render() {
     return (
       <div>
-        <h1 className="title">Rick and Morty</h1>
-        <div className="container">{this.state.character}</div>
+        {!this.state.error ? (
+          <RickandMorty
+            data={this.state}
+            prev={this.prevClick}
+            next={this.nextClick}
+          />
+        ) : (
+          <h1 className="error">
+            sorry for the inconvenience... try again later
+          </h1>
+        )}
       </div>
     );
   }
