@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import RickandMorty from "../Homepage";
+
+import Homepage from "../Homepage";
 
 import "../styles/styles.css";
 
@@ -73,11 +74,13 @@ class RickAndMortyAPI extends Component {
     return (
       <div>
         {!this.state.error ? (
-          <RickandMorty
-            data={this.state}
-            prev={this.prevClick}
-            next={this.nextClick}
-          />
+          <div>
+            <Homepage
+              data={this.state}
+              prev={this.prevClick}
+              next={this.nextClick}
+            />
+          </div>
         ) : (
           <h1 className="error">
             sorry for the inconvenience... try again later
