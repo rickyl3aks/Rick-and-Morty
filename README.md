@@ -1,5 +1,6 @@
-<h1>Rick and Morty</h1> 🪐
+<h1>Rick 🪐and Morty</h1>
 
-<p>You can find all the details about all the character in this animated science fiction sitcom thanks to the Rick and Morty API</p>
+<p>Contains all the characters of "rick and morty" animated sitcom,</p><br/>
+<p>fetching data from a generous external api</p>
 
 <p>---build in react---</p>
