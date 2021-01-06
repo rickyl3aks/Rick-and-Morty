@@ -1,5 +1,6 @@
 import React from "react";
 import Btn from "./Btn";
+import Loading from "./Loading";
 import Character from "./Character";
 
 function Homepage(props) {
@@ -7,7 +8,11 @@ function Homepage(props) {
     <div>
       <h1 className="title">Rick and Morty</h1>
       {!props.data.isLoading ? (
-        <h1 className="title">Loading...</h1>
+        <div>
+          <h1 className="title">Loading...</h1>
+          <br />
+          <Loading />
+        </div>
       ) : (
         <div>
           <Btn next={props.next} prev={props.prev} />
