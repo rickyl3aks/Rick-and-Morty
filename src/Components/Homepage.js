@@ -9,7 +9,7 @@ function Homepage(props) {
       <h1 className="title">Rick and Morty</h1>
       {!props.data.isLoading ? (
         <div>
-          <h1 className="title">Loading...</h1>
+          <Btn next={props.next} prev={props.prev} />
           <br />
           <Loading />
         </div>
