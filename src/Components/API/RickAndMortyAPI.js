@@ -91,4 +91,39 @@ class RickAndMortyAPI extends Component {
   }
 }
 
+{
+  /*const RickAndMortyAPI = () =>{
+  const [isLoading, setIsLoading] = useState(false)
+  const [character, setCharacter] = useState([])
+  const [page, setPage] = useState(1)
+  const [info, setInfo] = useState([]);
+
+  fetchData = async (page) => {
+    setIsLoading(false)
+    try {
+      const res = await fetch(
+        `https://rickandmortyapi.com/api/character/?page=${page}`
+      );
+      if (res.ok) {
+        const data = await res.json();
+
+        setTimeout(() => {
+          return {
+            setIsLoading(true);
+            setCharacter(data.results),
+            setInfo(data.info.pages)
+          }
+        }, 250)
+
+        useEffect = () => {
+          fetchData(page)
+        }
+
+
+      return(
+
+      )
+}*/
+}
+
 export default RickAndMortyAPI;

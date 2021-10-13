@@ -1,6 +1,6 @@
 import React from "react";
 
-function Cards({ all }) {
+const Cards = ({ all }) => {
   return (
     <div className="grid">
       <div className="info">
@@ -49,6 +49,6 @@ function Cards({ all }) {
       </div>
     </div>
   );
-}
+};
 
 export default Cards;

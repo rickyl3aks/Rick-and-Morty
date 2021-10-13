@@ -3,28 +3,28 @@ import Btn from "./Btn";
 import Loading from "./Loading";
 import Character from "./Character";
 
-function Homepage(props) {
+const Homepage = ({ prev, next, data }) => {
   return (
     <div>
       <h1 className="title">Rick and Morty</h1>
-      {!props.data.isLoading ? (
+      {!data.isLoading ? (
         <div>
-          <Btn next={props.next} prev={props.prev} />
+          <Btn next={next} prev={prev} />
           <br />
           <Loading />
         </div>
       ) : (
         <div>
-          <Btn next={props.next} prev={props.prev} />
+          <Btn next={next} prev={prev} />
           <p className="pages" style={{ marginLeft: "1rem" }}>
-            {props.data.page}/{props.data.info}
+            {data.page}/{data.info}
           </p>
-          <Character data={props.data} />
-          <Btn next={props.next} prev={props.prev} />
+          <Character data={data} />
+          <Btn next={next} prev={prev} />
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Homepage;
