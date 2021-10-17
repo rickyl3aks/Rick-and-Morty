@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Btn extends Component {
-  render() {
-    return (
-      <div className="btn-container">
-        <button className="btn" onClick={this.props.prev}>
-          Prev
-        </button>
-        <button className="btn" onClick={this.props.next}>
-          Next
-        </button>
-      </div>
-    );
-  }
-}
+const Btn = ({ prev, next }) => {
+  return (
+    <div className="btn-container">
+      <button className="btn" onClick={prev}>
+        Prev
+      </button>
+      <button className="btn" onClick={next}>
+        Next
+      </button>
+    </div>
+  );
+};
 
 export default Btn;
